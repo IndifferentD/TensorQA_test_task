@@ -1,5 +1,8 @@
+import logging
+logger = logging.getLogger(__name__)
 
 class WebPage(object):
+    """ Base class for PageObject object """
     _web_driver = None
 
     def __init__(self, web_driver, url=''):
@@ -22,4 +25,5 @@ class WebPage(object):
         return attr
 
     def go_to_site(self):
+        logger.debug(f'[{self.__class__.__name__}] Opening {self._base_url}')
         return self._web_driver.get(self._base_url)
